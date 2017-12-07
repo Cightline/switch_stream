@@ -9,3 +9,12 @@ This will toggle between the 2 sinks specified (1 and 2). After switching the de
 python switch.py --default-sink-toggle 1 2 --move-streams
 ```
 
+Installation:
+
+``` 
+pip install pulsectl
+
+cp switch.py /usr/bin/switch_stream
+chmod +x /usr/bin/switch_stream
+
+```
