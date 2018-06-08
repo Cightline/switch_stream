@@ -14,7 +14,7 @@ Installation:
 ``` 
 pip install pulsectl
 
-cp switch.py /usr/bin/switch_stream
+cp switch_stream.py /usr/bin/switch_stream
 chmod +x /usr/bin/switch_stream
 
 ```
