@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo cp switch_stream.py /usr/bin/switch_stream
