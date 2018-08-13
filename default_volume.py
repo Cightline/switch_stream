@@ -43,7 +43,7 @@ if __name__ == '__main__':
     parser.add_argument('--set-volume',      action='store',      type=int, help='example: --set-volume 50')
     parser.add_argument('--increase-volume', action='store',      type=int, help='example: --increase-volume 3')
     parser.add_argument('--decrease-volume', action='store',      type=int, help='example: --decrease-volume 3')
-    parser.add_argument('--mute',            action='store_true',           help='mute the default sink')
+    parser.add_argument('--mute',            action='store_true',           help='mute the default sink, you can also just run --set-volume 0')
 
     args = parser.parse_args()
 
@@ -56,6 +56,10 @@ if __name__ == '__main__':
 
     elif args.decrease_volume:
         relative_volume(-args.decrease_volume/100)
+
+    elif args.mute:
+        set_volume(0)
+
 
     
     else:
