@@ -46,8 +46,6 @@ def sink_toggle(indexes):
              new_sink  = pulse.get_sink_by_name(pulse.server_info().default_sink_name)
              pulse.mute(new_sink, False)
 
-
-
              print('the default sink has been set to index: %s, name: %s' % (index, get_default_sink().name))
              break
 

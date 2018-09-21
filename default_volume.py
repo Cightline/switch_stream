@@ -28,12 +28,27 @@ def relative_volume(percentage):
 
     #print(avg)
 
-    sink = pulse.sink_list()[get_default_sink().index]
-    pulse.volume_change_all_chans(sink, percentage)
+    sinks        = pulse.sink_list()
+    default_sink = get_default_sink().index
+
+    for sink in sinks:
+        if sink.index == default_sink:
+            pulse.volume_change_all_chans(sink, percentage)
+            break
 
 def set_volume(percentage):
     sink = pulse.sink_list()[get_default_sink().index]
     pulse.volume_set_all_chans(sink, percentage)
+
+
+def mute_toggle():
+    sink = pulse.sink_list()[get_default_sink().index]
+
+    if sink.mute == 1:
+        pulse.mute(sink, False)
+
+    else:
+        pulse.mute(sink)
 
 
 
@@ -43,7 +58,7 @@ if __name__ == '__main__':
     parser.add_argument('--set-volume',      action='store',      type=int, help='example: --set-volume 50')
     parser.add_argument('--increase-volume', action='store',      type=int, help='example: --increase-volume 3')
     parser.add_argument('--decrease-volume', action='store',      type=int, help='example: --decrease-volume 3')
-    parser.add_argument('--mute',            action='store_true',           help='mute the default sink, you can also just run --set-volume 0')
+    parser.add_argument('--toggle-mute',     action='store_true',           help='toggles mute on the default sink')
 
     args = parser.parse_args()
 
@@ -57,8 +72,8 @@ if __name__ == '__main__':
     elif args.decrease_volume:
         relative_volume(-args.decrease_volume/100)
 
-    elif args.mute:
-        set_volume(0)
+    elif args.toggle_mute:
+        mute_toggle()
 
 
     
