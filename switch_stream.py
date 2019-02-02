@@ -46,6 +46,8 @@ def sink_toggle(indexes):
              new_sink  = pulse.get_sink_by_name(pulse.server_info().default_sink_name)
              pulse.mute(new_sink, False)
 
+
+
              print('the default sink has been set to index: %s, name: %s' % (index, get_default_sink().name))
              break
 
@@ -53,11 +55,13 @@ def sink_toggle(indexes):
 def move_streams():
     count         = 0
     streams       = pulse.sink_input_list()
-    default_index = int(pulse.get_sink_by_name(pulse.server_info().default_sink_name).index)
+    default_sink = get_default_sink()
 
     for stream in streams:
         #print('moved stream: %s to the default sink' % (stream.name))
-        pulse.sink_input_move(stream.index, default_index)
+        #pulse.sink_input_move(stream.index, default_index)
+        print('STREAM', stream)
+        pulse.sink_input_move(stream.index, get_default_sink().index)
         count += 1
 
         print('moved %s streams' % (count))
@@ -71,13 +75,21 @@ if __name__ == '__main__':
     parser.add_argument('--move-streams',       action='store_true', help='this will move all streams to the new default sink')
     parser.add_argument('--auto',               action='store_true', help='automatically move all streams to the next sink')
 
+    parser.add_argument('--show-short', action='store_true', help='just print the current sink (shortened)')
+
     args = parser.parse_args()
 
     sinks = pulse.sink_list()
 
-    if not args.auto and not args.manual_sink_toggle and not args.move_streams:
+    if not args.auto and not args.manual_sink_toggle and not args.move_streams and not args.show_short:
         print('No arguments specified')
         exit()
+
+    
+    if args.show_short:
+        print(get_default_sink().description.split(' ')[0])
+        exit()
+
 
     # If they give no arguments, or only --auto
     if args.auto == True:
