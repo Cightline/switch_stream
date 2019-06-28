@@ -38,6 +38,6 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-prefix = "SINK: "
 ```
 
-
+I just press CTRL+mute and it'll rotate between my bluetooth speaker and my headphones. There is a bug where all streams aren't moved on the first try, so sometimes I have to press CTRL+mute twice. 
 
 
