@@ -2,14 +2,16 @@
 A Python script to switch all of your Pulseaudio streams 
 (I just noticed I had a few stars, so I pushed out an update since I was using a different repo). 
 
-Example usage:
+Example usage
+======
 
 This will toggle between the 2 sinks specified (1 and 2). After switching the default sink the script will move all of the channels to the new sink. 
 ```
 python switch.py --default-sink-toggle 1 2 --move-streams
 ```
 
-Installation:
+Installation
+======
 
 ``` 
 pip install pulsectl
@@ -19,7 +21,8 @@ chmod +x /usr/bin/switch_stream
 
 ```
 
-Usage:
+Configuration
+======
 
 This is what I have in my i3 configuration file. 
 
@@ -28,6 +31,7 @@ bindsym Control+XF86AudioMute exec "switch_stream --auto --move-streams; polybar
 ```
 
 Polybar module
+======
 ```
 [module/show_sink]
 type     = custom/ipc
