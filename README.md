@@ -1,3 +1,5 @@
+I am no longer working on this, consider using the Rust rewrite ["pulsecycle"](https://github.com/Cightline/pulsecycle)
+
 # switch_stream
 A Python script to switch all of your Pulseaudio streams 
 (I just noticed I had a few stars, so I pushed out an update since I was using a different repo). 
